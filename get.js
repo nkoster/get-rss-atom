@@ -53,15 +53,15 @@ const parser = function(res) {
             console.log(item)
         })
     });
-    console.log("Got response: " + res.statusCode);
+    console.log("Got response: " + res.statusCode)
 };
 
 if (hostPort === '80') {
     http.get(options, parser).on('error', e => {
         console.error(e.message)
-    });
+    })
 } else {
     https.get(options, parser).on('error', e => {
         console.error(e.message)
-    });
+    })
 }
