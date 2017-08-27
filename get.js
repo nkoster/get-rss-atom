@@ -33,7 +33,10 @@ function getItem(content, tag) {
             content = content.replace(s, '')
         }
     }
-    return s.replace("<![CDATA[", "").replace("]]>", "").replace(/<[^>]+>/g, '')
+    return s.replace("<![CDATA[", "")
+        .replace("]]>", "")
+        .replace(/<[^>]+>/g, '')
+        .replace(/\r?\n|\r/g, '')
 }
 
 function getItems(content, tag) {
