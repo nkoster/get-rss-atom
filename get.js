@@ -35,7 +35,6 @@ function extractItems(content) {
         p2 = c.search(/\/item>/);
         if (p2 > p1) {
             s = c.substr(p1, p2 - p1 + 6);
-            console.log(s);
             arr.push(s);
             c = c.replace(s, '');
             count++
@@ -46,7 +45,6 @@ function extractItems(content) {
         p2 = c.search(/\/entry>/);
         if (p2 > p1) {
             s = c.substr(p1, p2 - p1 + 7);
-            console.log(s);
             arr.push(s);
             c = c.replace(s, '');
             count++
@@ -59,7 +57,9 @@ const parser = function(res) {
     let content = '';
     res.on('data', chunk => content += chunk);
     res.on('end', () => {
-        console.log(extractItems(content).length)
+        extractItems(content).forEach((item) => {
+            console.log(item)
+        })
     });
     console.log("Got response: " + res.statusCode);
 };
