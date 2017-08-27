@@ -26,26 +26,43 @@ const
 
 function extractItems(content) {
     let
+        arr = [],
         c = content.toString(),
-        count = 0,
-        regex = /<item/;
-    while (c.search(regex) > 0) {
-        c = c.replace(regex, '');
-        count++
+        count = 0;
+    while (c.search(/<item/) > 0) {
+        let
+            p1 = c.search(/<item/),
+            p2 = c.search(/\/item>/),
+            s = '';
+        if (p2 > p1) {
+            s = c.substr(p1, p2 - p1 + 6);
+            console.log(s);
+            arr.push(s);
+            c = c.replace(s, '');
+            count++
+        }
     }
-    regex = /<entry/;
-    while (c.search(regex) > 0) {
-        c = c.replace(regex, '');
-        count++
+    while (c.search(/<entry/) > 0) {
+        let
+            p1 = c.search(/<entry/),
+            p2 = c.search(/\/entry>/),
+            s = '';
+        if (p2 > p1) {
+            s = c.substr(p1, p2 - p1 + 7);
+            console.log(s);
+            arr.push(s);
+            c = c.replace(s, '');
+            count++
+        }
     }
-    return count;
+    return arr
 }
 
 const parser = function(res) {
     let content = '';
     res.on('data', chunk => content += chunk);
     res.on('end', () => {
-        console.log(extractItems(content))
+        console.log(extractItems(content).length)
     });
     console.log("Got response: " + res.statusCode);
 };
