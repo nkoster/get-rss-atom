@@ -52,6 +52,9 @@ function getItems(content, tag) {
                 t = getItem(s, 'title'),
                 c = getItem(s, 'content').concat(getItem(s, 'description')),
                 l = getItem(s, 'link');
+            if (t === '') t = '[Failed]';
+            if (c === '') c = '[Failed]';
+            if (l === '') l = '[Failed]';
             arr.push( { title: t, description: c, href: l } );
             content = content.replace(s, '')
         }
