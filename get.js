@@ -42,8 +42,8 @@ function getItem(content, tag) {
 }
 
 function getItems(content, tag) {
-    let arr = [], tagStart = 0, tagEnd = 0;
-    while (content.search('<' + tag) > 0) {
+    let arr = [], tagStart = 0, tagEnd = 0, count = 0;
+    while (content.search('<' + tag) > 0 && count < content.length) {
         tagStart = content.search('<' + tag);
         tagEnd = content.search('/' + tag + '>');
         if (tagEnd > tagStart) {
@@ -58,6 +58,7 @@ function getItems(content, tag) {
             arr.push( { title: t, description: c, href: l } );
             content = content.replace(s, '')
         }
+        count++
     }
     return arr
 }
