@@ -24,33 +24,28 @@ const
         path: hostPath
     };
 
-function extractItems(content) {
+function getItems(content, tag) {
     let
         arr = [],
         c = content.toString(),
-        count = 0, p1 = 0, p2 = 0,
+        p1 = 0, p2 = 0,
         s = '';
-    while (c.search(/<item/) > 0) {
-        p1 = c.search(/<item/);
-        p2 = c.search(/\/item>/);
+    while (c.search('<' + tag) > 0) {
+        p1 = c.search('<' + tag);
+        p2 = c.search('/' + tag + '>');
         if (p2 > p1) {
-            s = c.substr(p1, p2 - p1 + 6);
+            s = c.substr(p1, p2 - p1 + tag.length + 2);
             arr.push(s);
             c = c.replace(s, '');
-            count++
-        }
-    }
-    while (c.search(/<entry/) > 0) {
-        p1 = c.search(/<entry/);
-        p2 = c.search(/\/entry>/);
-        if (p2 > p1) {
-            s = c.substr(p1, p2 - p1 + 7);
-            arr.push(s);
-            c = c.replace(s, '');
-            count++
         }
     }
     return arr
+}
+
+function extractItems(content) {
+    let
+        c = content.toString();
+    return getItems(c, 'item').concat(getItems(c, 'entry'))
 }
 
 const parser = function(res) {
