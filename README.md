@@ -4,6 +4,8 @@ WIP: this is an attempt to create a new generic library since other libraries ha
 
 Usage:
 
-  node get.js -host www.geenstijl.nl -port 443 -path /feeds/recent.atom
+`node get.js -host www.geenstijl.nl -port 443 -path /feeds/recent.atom`
 
-  node get.js -host www.at5.nl -path /feeds/at5/nieuws/V100/nieuws
+or
+
+`node get.js -host www.at5.nl -path /feeds/at5/nieuws/V100/nieuws`
