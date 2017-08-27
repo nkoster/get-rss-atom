@@ -1,6 +1,6 @@
 'use strict';
 
-let hostFeed = '', hostPort = '', hostPath = '';
+let hostFeed = '', hostPort = '80', hostPath = '';
 
 if (process.argv.indexOf("-host") !== -1) {
     hostFeed = process.argv[process.argv.indexOf("-host") + 1]
@@ -23,17 +23,28 @@ const
         path: hostPath
     };
 
-function getItems(content, tag) {
-    let
-        arr = [],
-        tagStart = 0, tagEnd = 0,
-        s = '';
+function getItem(content, tag) {
+    let tagStart = 0, tagEnd = 0, s = '';
     while (content.search('<' + tag) > 0) {
         tagStart = content.search('<' + tag);
         tagEnd = content.search('/' + tag + '>');
         if (tagEnd > tagStart) {
             s = content.substr(tagStart, tagEnd - tagStart + tag.length + 2);
-            arr.push(s);
+            content = content.replace(s, '')
+        }
+    }
+    return s
+}
+
+function getItems(content, tag) {
+    let arr = [], tagStart = 0, tagEnd = 0;
+    while (content.search('<' + tag) > 0) {
+        tagStart = content.search('<' + tag);
+        tagEnd = content.search('/' + tag + '>');
+        if (tagEnd > tagStart) {
+            let s = content.substr(tagStart, tagEnd - tagStart + tag.length + 2);
+            let t = getItem(s, 'title');
+            arr.push(t);
             content = content.replace(s, '')
         }
     }
@@ -52,7 +63,7 @@ const parser = function(res) {
             console.log(item)
         })
     });
-    console.log("Got response: " + res.statusCode)
+    console.log(`Got response: ${res.statusCode}`)
 };
 
 if (hostPort === '80') {
