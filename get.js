@@ -44,7 +44,7 @@ function getItems(content, tag) {
         if (tagEnd > tagStart) {
             let s = content.substr(tagStart, tagEnd - tagStart + tag.length + 2);
             let t = getItem(s, 'title');
-            arr.push(t);
+            arr.push( { title: t } );
             content = content.replace(s, '')
         }
     }
@@ -60,7 +60,7 @@ const parser = function(res) {
     res.on('data', chunk => content += chunk);
     res.on('end', () => {
         extractItems(content).forEach((item) => {
-            console.log(item)
+            console.log(item.title)
         })
     });
     console.log(`Got response: ${res.statusCode}`)
