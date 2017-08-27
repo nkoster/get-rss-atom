@@ -28,12 +28,11 @@ function extractItems(content) {
     let
         arr = [],
         c = content.toString(),
-        count = 0;
+        count = 0, p1 = 0, p2 = 0,
+        s = '';
     while (c.search(/<item/) > 0) {
-        let
-            p1 = c.search(/<item/),
-            p2 = c.search(/\/item>/),
-            s = '';
+        p1 = c.search(/<item/);
+        p2 = c.search(/\/item>/);
         if (p2 > p1) {
             s = c.substr(p1, p2 - p1 + 6);
             console.log(s);
@@ -43,10 +42,8 @@ function extractItems(content) {
         }
     }
     while (c.search(/<entry/) > 0) {
-        let
-            p1 = c.search(/<entry/),
-            p2 = c.search(/\/entry>/),
-            s = '';
+        p1 = c.search(/<entry/);
+        p2 = c.search(/\/entry>/);
         if (p2 > p1) {
             s = c.substr(p1, p2 - p1 + 7);
             console.log(s);
