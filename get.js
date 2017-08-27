@@ -1,9 +1,5 @@
 'use strict';
 
-const
-    http = require('http'),
-    https = require('https');
-
 let hostFeed = '';
 if (process.argv.indexOf("-host") != -1) {
     hostFeed = process.argv[process.argv.indexOf("-host") + 1];
@@ -19,7 +15,9 @@ if (process.argv.indexOf("-path") != -1) {
     hostPath = process.argv[process.argv.indexOf("-path") + 1];
 }
 
-let
+const
+    http = require('http'),
+    https = require('https'),
     options = {
         host: hostFeed,
         port: hostPort,
