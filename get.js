@@ -1,16 +1,15 @@
 'use strict';
 
-let hostFeed = '';
+let hostFeed = '', hostPort = '', hostPath = '';
+
 if (process.argv.indexOf("-host") !== -1) {
     hostFeed = process.argv[process.argv.indexOf("-host") + 1]
 }
 
-let hostPort = '';
 if (process.argv.indexOf("-port") !== -1) {
     hostPort = process.argv[process.argv.indexOf("-port") + 1]
 }
 
-let hostPath = '';
 if (process.argv.indexOf("-path") !== -1) {
     hostPath = process.argv[process.argv.indexOf("-path") + 1]
 }
