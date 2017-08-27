@@ -39,7 +39,7 @@ function extractItems(content) {
     return count;
 }
 
-const f = function(res) {
+const parser = function(res) {
     let content = '';
     res.on('data', chunk => content += chunk);
     res.on('end', () => {
@@ -50,11 +50,11 @@ const f = function(res) {
 };
 
 if (hostPort === '80') {
-    http.get(options, f).on('error', error => {
-        console.log("Got error: " + error.message);
+    http.get(options, parser).on('error', e => {
+        console.error(e.message);
     });
 } else {
-    https.get(options, f).on('error', error => {
-        console.log("Got error: " + error.message);
+    https.get(options, parser).on('error', e => {
+        console.error(e.message);
     });
 }
