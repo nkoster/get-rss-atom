@@ -27,13 +27,15 @@ const
 function extractItems(content) {
     let
         c = content.toString(),
-        count = 0;
-    while (c.indexOf('<item') > 0) {
-        c = c.replace(/<item/, '');
+        count = 0,
+        regex = /<item/;
+    while (c.search(regex) > 0) {
+        c = c.replace(regex, '');
         count++
     }
-    while (c.indexOf('<entry') > 0) {
-        c = c.replace(/<entry/, '');
+    regex = /<entry/;
+    while (c.search(regex) > 0) {
+        c = c.replace(regex, '');
         count++
     }
     return count;
