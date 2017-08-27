@@ -68,11 +68,12 @@ function extractItems(content) {
 }
 
 const parser = function(res) {
-    let content = '';
+    let content = '', count = 0;
     res.on('data', chunk => content += chunk);
     res.on('end', () => {
         extractItems(content).forEach((item) => {
-            console.log(`\n--------\n${item.title}\n${item.description}\n${item.href}\n`)
+            count++;
+            console.log(`\n-${count}--------\n${item.title}\n${item.description}\n${item.href}\n`)
         })
     });
     console.log(`Got response: ${res.statusCode}`)
