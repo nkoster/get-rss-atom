@@ -24,13 +24,15 @@ const
     };
 
 function getItem(content, tag) {
-    let tagStart = 0, tagEnd = 0, s = '';
-    while (content.search('<' + tag) > 0) {
+    let tagStart = 0, tagEnd = 0, s = '', count = 0;
+    while (content.search('<' + tag) > 0 && count < content.length) {
         tagStart = content.search('<' + tag);
         tagEnd = content.search('/' + tag + '>');
         if (tagEnd > tagStart) {
             s = content.substr(tagStart, tagEnd - tagStart + tag.length + 2);
             content = content.replace(s, '')
+        } else {
+            count++
         }
     }
     return s.replace("<![CDATA[", "")
@@ -48,8 +50,9 @@ function getItems(content, tag) {
             let
                 s = content.substr(tagStart, tagEnd - tagStart + tag.length + 2),
                 t = getItem(s, 'title'),
-                c = getItem(s, 'content').concat(getItem(s, 'description'));
-            arr.push( { title: t, description: c } );
+                c = getItem(s, 'content').concat(getItem(s, 'description')),
+                l = getItem(s, 'link');
+            arr.push( { title: t, description: c, href: l } );
             content = content.replace(s, '')
         }
     }
@@ -65,7 +68,7 @@ const parser = function(res) {
     res.on('data', chunk => content += chunk);
     res.on('end', () => {
         extractItems(content).forEach((item) => {
-            console.log(`\n--------\n${item.title}\n${item.description}\n`)
+            console.log(`\n--------\n${item.title}\n${item.description}\n${item.href}\n`)
         })
     });
     console.log(`Got response: ${res.statusCode}`)
