@@ -43,7 +43,6 @@ const parser = function(res) {
     let content = '';
     res.on('data', chunk => content += chunk);
     res.on('end', () => {
-        //console.log(content);
         console.log(extractItems(content))
     });
     console.log("Got response: " + res.statusCode);
