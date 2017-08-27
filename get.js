@@ -33,7 +33,7 @@ function getItem(content, tag) {
             content = content.replace(s, '')
         }
     }
-    return s
+    return s.replace("<![CDATA[", "").replace("]]>", "").replace(/<[^>]+>/g, '')
 }
 
 function getItems(content, tag) {
@@ -42,9 +42,10 @@ function getItems(content, tag) {
         tagStart = content.search('<' + tag);
         tagEnd = content.search('/' + tag + '>');
         if (tagEnd > tagStart) {
-            let s = content.substr(tagStart, tagEnd - tagStart + tag.length + 2);
-            let t = getItem(s, 'title');
-            let c = getItem(s, 'content').concat(getItem(s, 'description'));
+            let
+                s = content.substr(tagStart, tagEnd - tagStart + tag.length + 2),
+                t = getItem(s, 'title'),
+                c = getItem(s, 'content').concat(getItem(s, 'description'));
             arr.push( { title: t, description: c } );
             content = content.replace(s, '')
         }
@@ -61,7 +62,7 @@ const parser = function(res) {
     res.on('data', chunk => content += chunk);
     res.on('end', () => {
         extractItems(content).forEach((item) => {
-            console.log(`${item.title}\n${item.description}`)
+            console.log(`\n--------\n${item.title}\n${item.description}\n`)
         })
     });
     console.log(`Got response: ${res.statusCode}`)
