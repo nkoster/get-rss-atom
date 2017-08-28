@@ -41,8 +41,9 @@ function getItem(content, tag) {
         .replace(/\r?\n|\r/g, '')
 }
 
-function getLink(content) {
-    return content.match(/<link(.*)?\/>/)[0]
+function getItemAtom(content, tag) {
+    const regex = '<' + tag + '(.*)?/>';
+    return content.match(regex)[0]
         .match(/"(.*)"/)[0].replace(/"/g, '')
 }
 
@@ -59,7 +60,7 @@ function getItems(content, tag) {
                 l = getItem(s, 'link');
             if (t === '') t = '[Failed]';
             if (c === '') c = '[Failed]';
-            if (l === '') l = getLink(s);
+            if (l === '') l = getItemAtom(s, 'link');
             if (l === '') l = '[Failed]';
             arr.push( { title: t, description: c, href: l } );
             content = content.replace(s, '')
