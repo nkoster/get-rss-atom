@@ -42,8 +42,9 @@ function getItem(content, tag) {
 }
 
 function getItemAtom(content, tag) {
-    const regex = '<' + tag + '(.*)?/>';
-    let match = content.match(regex);
+    const
+        regex = '<' + tag + '(.*)?/>',
+        match = content.match(regex);
     if (match !== null) {
         return match[0].match(/"(.*)"/)[0].replace(/"/g, '')
     } else {
