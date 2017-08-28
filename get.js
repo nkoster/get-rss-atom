@@ -84,7 +84,7 @@ const parser = function(res) {
     res.on('end', () => {
         extractItems(content).forEach((item) => {
             count++;
-            console.log(`\n-${count}--------\n${item.title}\n${item.description}\n${item.href}\n`)
+            console.log(`\n--${count}-- ${item.title}\n${item.description}\n${item.href}\n`)
         })
     });
     console.log(`Got response: ${res.statusCode}`)
