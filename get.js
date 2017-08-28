@@ -43,8 +43,12 @@ function getItem(content, tag) {
 
 function getItemAtom(content, tag) {
     const regex = '<' + tag + '(.*)?/>';
-    return content.match(regex)[0]
-        .match(/"(.*)"/)[0].replace(/"/g, '')
+    let match = content.match(regex);
+    if (match !== null) {
+        return match[0].match(/"(.*)"/)[0].replace(/"/g, '')
+    } else {
+        return ''
+    }
 }
 
 function getItems(content, tag) {
