@@ -76,7 +76,8 @@ function getItems(content, tag) {
 }
 
 function extractItems(content) {
-    return getItems(content.toString(), 'item').concat(getItems(content.toString(), 'entry'))
+    return getItems(content.toString(), 'item')
+        .concat(getItems(content.toString(), 'entry'))
 }
 
 const parser = function(res) {
