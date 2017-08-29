@@ -1,6 +1,6 @@
 'use strict';
 
-let hostFeed = '', hostPort = '80', hostPath = '';
+let hostFeed = '', hostPort = '80', hostPath = '', hostURL = '';
 
 if (process.argv.indexOf("-host") !== -1) {
     hostFeed = process.argv[process.argv.indexOf("-host") + 1]
@@ -14,13 +14,19 @@ if (process.argv.indexOf("-path") !== -1) {
     hostPath = process.argv[process.argv.indexOf("-path") + 1]
 }
 
+if (process.argv.indexOf("-url") !== -1) {
+    hostURL = process.argv[process.argv.indexOf("-url") + 1]
+}
+
 const
+    url = require('url'),
+    feed = url.parse(hostURL),
     http = require('http'),
     https = require('https'),
     options = {
-        host: hostFeed,
-        port: hostPort,
-        path: hostPath
+        host: feed.hostname,
+        port: feed.port,
+        path: feed.path
     };
 
 function getItem(content, tag) {
