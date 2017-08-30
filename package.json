@@ -1,12 +1,12 @@
 {
   "name": "get-rss-atom",
-  "version": "1.0.1",
-  "description": "Get RSS from URL and return JSON (not ready yet)",
+  "version": "1.0.2",
+  "description": "Reed feed content from URL and return Array with Objects",
   "main": "get.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js http://rss.fok.nl/feeds/nieuws || exit 1"
   },
   "author": "Niels Koster",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {}
 }
