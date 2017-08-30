@@ -1,4 +1,4 @@
-test = require('./get');
+test = require('get-rss-son/get');
 
 let
     count = 0;
