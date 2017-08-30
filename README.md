@@ -1,5 +1,7 @@
 Simple RSS/ATOM feed parser.
 
+Pass an URL to getRssAtom() and you'll receive a callback with an object array.
+
 ### Install
 
 ```
