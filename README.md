@@ -1,13 +1,13 @@
 Simple RSS/ATOM feed parser.
 
-Install:
+###Install
 
 ```
 npm init
 npm install --save get-rss-atom
 ```
 
-Usage:
+###Usage
 
 For example, create `test.js`
 
@@ -28,7 +28,7 @@ test.getRssAtom(hostFeed, content => content.forEach((item) => {
 }));
 ```
 
-Run:
+###Run
 
 ```
 node test.js https://rss.fok.nl/feeds/nieuws
