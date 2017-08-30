@@ -1,10 +1,10 @@
 {
   "name": "get-rss-atom",
-  "version": "1.0.2",
+  "version": "1.0.2a",
   "description": "Reed feed content from URL and return Array with Objects",
   "main": "get.js",
   "scripts": {
-    "test": "node test.js http://rss.fok.nl/feeds/nieuws || exit 1"
+    "test": "echo 'no test yet' && exit 1"
   },
   "author": "Niels Koster",
   "license": "MIT",
