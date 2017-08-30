@@ -1,6 +1,6 @@
 'use strict';
 
-exports.getRssAtom = function(feedUrl) {
+exports.getRssAtom = function(feedUrl, callback) {
 
     const
         url = require('url'),
@@ -69,15 +69,15 @@ exports.getRssAtom = function(feedUrl) {
     }
 
     const parser = function (res) {
-        let content = '', count = 0;
-        res.on('data', chunk => content += chunk);
-        res.on('end', () => {
-            extractItems(content).forEach((item) => {
-                count++;
-                console.log(`\n--${count}-- ${item.title}\n${item.description}\n${item.href}\n`)
-            })
-        });
-        console.log(`Got response: ${res.statusCode}`)
+        if (res.statusCode === 200) {
+            let content = '';
+            res.on('data', chunk => content += chunk);
+            res.on('end', () => {
+                callback(extractItems(content))
+            });
+        } else {
+            console.error(`No content, response code was: ${res.statusCode}`)
+        }
     };
 
     if (feed.port === '80') {
