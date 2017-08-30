@@ -1,11 +1,33 @@
 Simple RSS/ATOM feed parser.
 
-WIP: this is an attempt to create a new generic library since other libraries have failed, at least for me.
+Install:
 
-Usage:
+```
+npm init
+npm install --save get-rss-atom
+```
 
-`node get.js -host www.geenstijl.nl -port 443 -path /feeds/recent.atom`
+Example, create "test.js":
 
-or
+```
+test = require('get-rss-son/get');
 
-`node get.js -host www.at5.nl -path /feeds/at5/nieuws/V100/nieuws`
+let
+    count = 0;
+    hostFeed = '';
+
+if (process.argv.length > 1) {
+    hostFeed = process.argv[2]
+}
+
+test.getRssAtom(hostFeed, content => content.forEach((item) => {
+    count++;
+    console.log(`\n--${count}-- ${item.title}\n${item.description}\n${item.href}\n`)
+}));
+```
+
+Test it:
+
+```
+node test.js https://rss.fok.nl/feeds/nieuws
+```
