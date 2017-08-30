@@ -1,6 +1,6 @@
 Simple RSS/ATOM feed parser.
 
-`getRssAtom(url)` returns a callback with an object array.
+`getRssAtom(url, callback)` returns a callback with an object array.
 
 ### Install
 
