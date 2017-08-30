@@ -35,5 +35,5 @@ test.getRssAtom(hostFeed, content => content.forEach((item) => {
 ### Run
 
 ```
-node test.js https://rss.fok.nl/feeds/nieuws
+node test.js http://www.at5.nl/feeds/at5/nieuws/V100/nieuws
 ```
