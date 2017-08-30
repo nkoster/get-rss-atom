@@ -7,7 +7,9 @@ npm init
 npm install --save get-rss-atom
 ```
 
-Example, create "test.js":
+Usage:
+
+For example, create `test.js`
 
 ```
 test = require('get-rss-son/get');
@@ -26,7 +28,7 @@ test.getRssAtom(hostFeed, content => content.forEach((item) => {
 }));
 ```
 
-Test it:
+Run:
 
 ```
 node test.js https://rss.fok.nl/feeds/nieuws
