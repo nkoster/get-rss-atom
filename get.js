@@ -9,7 +9,6 @@ exports.getRssAtom = function(feedUrl, callback) {
         https = require('https'),
         options = {
             host: feed.hostname,
-            port: feed.port,
             path: feed.path
         };
 
@@ -69,18 +68,12 @@ exports.getRssAtom = function(feedUrl, callback) {
     }
 
     const parser = function (res) {
-        if (res.statusCode === 200) {
-            let content = '';
-            res.on('data', chunk => content += chunk);
-            res.on('end', () => {
-                callback(extractItems(content))
-            });
-        } else {
-            console.error(`No content, response code was: ${res.statusCode}`)
-        }
+        let content = '';
+        res.on('data', chunk => content += chunk);
+        res.on('end', () => callback(extractItems(content)));
     };
 
-    if (feed.port === '80') {
+    if (feed.protocol === 'http:') {
         http.get(options, parser).on('error', e => {
             console.error(e.message)
         })
