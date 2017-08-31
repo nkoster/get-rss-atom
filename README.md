@@ -34,7 +34,7 @@ let
     count = 0;
     feedUrl = '';
 
-if (process.argv.length > 1) {
+if (process.argv.length > 2) {
     feedUrl = process.argv[2]
 } else {
     console.error('Please specify an RSS URL.');
