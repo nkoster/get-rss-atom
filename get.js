@@ -58,9 +58,23 @@ exports.getRssAtom = function(feedUrl, callback) {
         return arr
     }
 
+    function getTitle(content) {
+        let
+            s = content.toString(),
+            titleStart = s.indexOf('<title'),
+            titleEnd = s.indexOf('</title>');
+        s = s.substr(titleStart, titleEnd - titleStart + 8);
+        if ( s === '') s = '[Failed]';
+        return s.replace("<![CDATA[", "")
+            .replace("]]>", "")
+            .replace(/<[^>]+>/g, '')
+            .replace(/\r?\n|\r/g, '')
+    }
+
     function extractItems(content) {
-        return getItems(content.toString(), 'item')
-            .concat(getItems(content.toString(), 'entry'))
+        let t = getTitle(content.toString());
+        return { title: t, items: getItems(content.toString(), 'item')
+            .concat(getItems(content.toString(), 'entry')) }
     }
 
     const parser = function (res) {
