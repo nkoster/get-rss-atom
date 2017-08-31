@@ -1,6 +1,6 @@
 {
   "name": "get-rss-atom",
-  "version": "1.0.6a",
+  "version": "1.0.6b",
   "description": "Reed feed content from URL and return Array with Objects",
   "main": "get.js",
   "scripts": {
