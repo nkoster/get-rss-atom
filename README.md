@@ -48,8 +48,8 @@ reader.getRssAtom(feedUrl, feed => {
     feed.items.forEach((item) => {
         count++;
         console.log(`\n--${count}-- ${item.title}\n${item.content}\n${item.href}\n`)
-    }
-)});
+    })
+});
 ~~~
 
 ### Run
