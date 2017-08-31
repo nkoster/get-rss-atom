@@ -19,7 +19,7 @@ Simple RSS/ATOM feed parser.
 ### Install
 
 ```
-npm init
+npm init -y
 npm install --save get-rss-atom
 ```
 
