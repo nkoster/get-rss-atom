@@ -18,14 +18,22 @@ Simple RSS/ATOM feed parser.
 
 ### Install
 
-```
-npm init -y
+~~~
 npm install --save get-rss-atom
-```
+~~~
 
 ### Usage
 
-For example, create `reader.js`
+An example reader.
+
+~~~
+mkdir reader
+cd reader
+npm init -y
+npm install --save get-rss-atom
+~~~
+
+Create `reader.js`
 
 ~~~javascript
 'use strict';
@@ -52,8 +60,8 @@ reader.getRssAtom(feedUrl, feed => {
 });
 ~~~
 
-### Run
+Run:
 
-```
+~~~
 node reader http://www.at5.nl/feeds/at5/nieuws/V100/nieuws
-```
+~~~
