@@ -11,10 +11,10 @@ npm install --save get-rss-atom
 
 ### Usage
 
-For example, create `test.js`
+For example, create `reader.js`
 
 ```
-test = require('get-rss-atom/get');
+reader = require('get-rss-atom/get');
 
 let
     count = 0;
@@ -24,7 +24,7 @@ if (process.argv.length > 1) {
     feedUrl = process.argv[2]
 }
 
-test.getRssAtom(feedUrl, content => content.forEach((item) => {
+reader.getRssAtom(feedUrl, content => content.forEach((item) => {
     count++;
     console.log(`\n--${count}-- ${item.title}\n${item.description}\n${item.href}\n`)
 }));
@@ -33,5 +33,5 @@ test.getRssAtom(feedUrl, content => content.forEach((item) => {
 ### Run
 
 ```
-node test.js http://www.at5.nl/feeds/at5/nieuws/V100/nieuws
+node reader http://www.at5.nl/feeds/at5/nieuws/V100/nieuws
 ```
