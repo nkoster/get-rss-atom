@@ -24,7 +24,7 @@ npm install --save get-rss-atom
 
 ### Usage
 
-An example reader.
+An example reader:
 
 ~~~
 mkdir reader
