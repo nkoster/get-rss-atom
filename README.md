@@ -33,7 +33,7 @@ For example, create `reader.js`
 const reader = require('get-rss-atom');
 
 let
-    count = 0;
+    count = 0,
     feedUrl = '';
 
 if (process.argv.length > 2) {
