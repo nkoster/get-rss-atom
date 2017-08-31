@@ -28,6 +28,8 @@ npm install --save get-rss-atom
 For example, create `reader.js`
 
 ```
+'use strict';
+
 const reader = require('get-rss-atom');
 
 let
