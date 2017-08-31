@@ -2,7 +2,7 @@ Simple RSS/ATOM feed parser.
 
 `getRssAtom(url, callback)` returns a callback with an object:
 
-~~~
+~~~javascript
 {
     title: String,
     items: Array [
