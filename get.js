@@ -50,7 +50,7 @@ exports.getRssAtom = function(feedUrl, callback) {
                 if (c === '') c = '[Failed]';
                 if (l === '') l = getItemAtom(s, 'link');
                 if (l === '') l = '[Failed]';
-                arr.push({title: t, description: c, href: l});
+                arr.push({title: t, content: c, href: l});
                 content = content.replace(s, '')
             }
             count++
