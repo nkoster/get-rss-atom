@@ -14,7 +14,7 @@ npm install --save get-rss-atom
 For example, create `reader.js`
 
 ```
-reader = require('get-rss-atom/get');
+reader = require('get-rss-atom');
 
 let
     count = 0;
