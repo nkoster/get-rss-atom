@@ -6,11 +6,7 @@ exports.getRssAtom = function(feedUrl, callback) {
         url = require('url'),
         feed = url.parse(feedUrl),
         http = require('http'),
-        https = require('https'),
-        options = {
-            host: feed.hostname,
-            path: feed.path
-        };
+        https = require('https');
 
     function getItem(content, tag) {
         let tagStart = 0, tagEnd = 0, s = '', count = 0;
@@ -74,11 +70,11 @@ exports.getRssAtom = function(feedUrl, callback) {
     };
 
     if (feed.protocol === 'http:') {
-        http.get(options, parser).on('error', e => {
+        http.get(feedUrl, parser).on('error', e => {
             console.error(e.message)
         })
     } else {
-        https.get(options, parser).on('error', e => {
+        https.get(feedUrl, parser).on('error', e => {
             console.error(e.message)
         })
     }
