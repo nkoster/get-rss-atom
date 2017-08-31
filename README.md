@@ -1,6 +1,20 @@
 Simple RSS/ATOM feed parser.
 
-`getRssAtom(url, callback)` returns a callback with an object array.
+`getRssAtom(url, callback)` returns a callback with an object:
+
+```
+{
+    title: String,
+    items: Array [
+        {
+            title: String,
+            description: String,
+            href: String
+        },
+        ...
+    ]
+}
+```
 
 ### Install
 
@@ -22,12 +36,18 @@ let
 
 if (process.argv.length > 1) {
     feedUrl = process.argv[2]
+} else {
+    console.error('Please specify an RSS URL.');
+    process.exit(1)
 }
 
-reader.getRssAtom(feedUrl, content => content.forEach((item) => {
-    count++;
-    console.log(`\n--${count}-- ${item.title}\n${item.description}\n${item.href}\n`)
-}));
+reader.getRssAtom(feedUrl, feed => {
+    console.log(`\n${feed.title}\n`);
+    feed.items.forEach((item) => {
+        count++;
+        console.log(`\n--${count}-- ${item.title}\n${item.description}\n${item.href}\n`)
+    }
+)});
 ```
 
 ### Run
