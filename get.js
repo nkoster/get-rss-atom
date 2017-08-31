@@ -85,12 +85,14 @@ exports.getRssAtom = function(feedUrl, callback) {
 
     if (feed.protocol === 'http:') {
         http.get(feedUrl, parser).on('error', e => {
-            console.error(e.message)
+            console.error(`ERR: ${e.message}`)
+        })
+    } else if (feed.protocol === 'https:') {
+        https.get(feedUrl, parser).on('error', e => {
+            console.error(`ERR: ${e.message}`)
         })
     } else {
-        https.get(feedUrl, parser).on('error', e => {
-            console.error(e.message)
-        })
+        console.error(`ERR: cannot handle ${feed.protocol}`)
     }
 
 };
