@@ -1,6 +1,6 @@
 {
   "name": "get-rss-atom",
-  "version": "1.0.6g",
+  "version": "1.0.6h",
   "description": "Reed feed content from URL and return Array with Objects",
   "main": "get.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "type": "git",
     "url": "https://github.com/nkoster/get-rss-atom.git"
   },
+  "keywords": ["rss", "atom"],
   "author": "Niels Koster",
   "license": "MIT",
   "dependencies": {}
