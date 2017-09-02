@@ -1,7 +1,7 @@
 {
   "name": "get-rss-atom",
-  "version": "1.0.6h",
-  "description": "Reed feed content from URL and return Array with Objects",
+  "version": "1.0.6i",
+  "description": "Reed feed content from URL and return ojects with items",
   "main": "get.js",
   "scripts": {
     "test": "echo 'no test yet' && exit 1"
