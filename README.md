@@ -18,7 +18,7 @@ Simple RSS/ATOM feed parser.
 
 ### Install
 
-~~~
+~~~bash
 npm install --save get-rss-atom
 ~~~
 
@@ -26,7 +26,7 @@ npm install --save get-rss-atom
 
 An example reader:
 
-~~~
+~~~bash
 mkdir reader
 cd reader
 npm init -y
@@ -62,6 +62,6 @@ reader.getRssAtom(feedUrl, feed => {
 
 Run:
 
-~~~
+~~~bash
 node reader http://www.at5.nl/feeds/at5/nieuws/V100/nieuws
 ~~~
