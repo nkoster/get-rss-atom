@@ -73,12 +73,13 @@ exports.getRssAtom = function(feedUrl, callback) {
 
     function extractItems(content) {
         let t = getTitle(content.toString());
-        return { title: t, items: getItems(content.toString(), 'item')
+        return { title: t, href: feedUrl, items: getItems(content.toString(), 'item')
             .concat(getItems(content.toString(), 'entry')) }
     }
 
     const parser = function (res) {
         let content = '';
+        res.setEncoding('utf8');
         res.on('data', chunk => content += chunk);
         res.on('end', () => callback(extractItems(content)));
     };
