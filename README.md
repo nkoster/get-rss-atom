@@ -52,10 +52,10 @@ if (process.argv.length > 2) {
 }
 
 reader.getRssAtom(feedUrl, feed => {
-    console.log(`\n${feed.title}\n`);
+    console.log(`\n${feed.title} (${feed.href})\n`);
     feed.items.forEach((item) => {
         count++;
-        console.log(`\n--${count}-- ${item.title} (${item.href})\n${item.content}\n${item.href}\n`)
+        console.log(`\n--${count}-- ${item.title}\n${item.content}\n${item.href}\n`)
     })
 });
 ~~~
