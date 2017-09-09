@@ -5,6 +5,7 @@ Simple RSS/ATOM feed parser.
 ~~~javascript
 {
     title: String,
+    href: String,
     items: Array [
         {
             title: String,
